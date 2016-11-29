@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>MyPRP - My Personal Resource Planning</title>
+
+  <!-- Bootstrap core CSS -->
+
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <link href="{% static 'fonts/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/animate.min.css' %}" rel="stylesheet">
+
+  <!-- Custom styling plus plugins -->
+  <link href="{% static 'css/custom.css' %}" rel="stylesheet">
+  <link href="{% static 'css/icheck/flat/green.css' %}" rel="stylesheet">
+
+  <!-- ion_range -->
+  <link rel="stylesheet" href="{% static 'css/normalize.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/ion.rangeSlider.skinFlat.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/ion.rangeSlider.css' %}" />
+
+
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+
+  <!--[if lt IE 9]>
+        <script src="../assets/js/ie8-responsive-file-warning.js"></script>
+        <![endif]-->
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+</head>
+
+
+<body class="nav-sm">
+
+  <div class="container body">
+
+
+    <div class="main_container">
+
+      <div class="col-md-3 left_col">
+        <div class="left_col scroll-view">
+
+          <div class="navbar nav_title" style="border: 0;">
+            <a href="#" class="site_title"><i class="fa fa-line-chart"></i> <span>MyPRP</span></a>
+          </div>
+          <div class="clearfix"></div>
+
+          <!-- menu profile quick info
+          <div class="profile">
+            <div class="profile_pic">
+              <img src="{% static 'images/user.png' %}" alt="..." class="img-circle profile_img">
+            </div>
+            <div class="profile_info">
+              <span>Welcome,</span>
+              <h2>Daniel</h2>
+            </div>
+          </div>
+          <!-- /menu profile quick info -->
+
+          <br />
+
+          <!-- sidebar menu -->
+          <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+
+            <div class="menu_section">
+
+              <ul class="nav side-menu">
+                <li><a href="{% url 'home' %}"><i class="fa fa-home"></i>Home</a>
+                </li>
+                <li><a href="{% url 'extrato' %}"><i class="fa fa-dollar"></i>Extrato</a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+          <!-- /sidebar menu -->
+
+          <!-- /menu footer buttons -->
+          <!--
+          <div class="sidebar-footer hidden-small">
+            <a data-toggle="tooltip" data-placement="top" title="Settings">
+              <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+              <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="Lock">
+              <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="Logout">
+              <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+            </a>
+          </div>
+          -->
+          <!-- /menu footer buttons -->
+        </div>
+      </div>
+
+      <!-- top navigation -->
+      <div class="top_nav">
+
+        <div class="nav_menu">
+          <nav class="" role="navigation">
+            <div class="nav toggle">
+              <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+              <li class="">
+                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  <img src="{% static 'images/user.png' %}" alt="">Daniel
+                  <span class=" fa fa-angle-down"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
+                  <li><a href="javascript:;">  Profile</a>
+                  </li>
+                  <li>
+                    <a href="javascript:;">  Settings</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="javascript:;">Help</a>
+                  </li>
+                  <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                  </li>
+                </ul>
+              </li>
+
+            </ul>
+          </nav>
+        </div>
+
+      </div>
+      <!-- /top navigation -->
+
+      {% block content %}{% endblock %}
+
+    </div>
+
+  </div>
+
+  <div id="custom_notifications" class="custom-notifications dsp_none">
+    <ul class="list-unstyled notifications clearfix" data-tabbed_notifications="notif-group">
+    </ul>
+    <div class="clearfix"></div>
+    <div id="notif-group" class="tabbed_notifications"></div>
+  </div>
+
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+  <!-- bootstrap progress js -->
+  <script src="{% static 'js/progressbar/bootstrap-progressbar.min.js' %}"></script>
+  <script src="{% static 'js/nicescroll/jquery.nicescroll.min.js' %}"></script>
+  <!-- icheck -->
+  <script src="{% static 'js/icheck/icheck.min.js' %}"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+  <!-- daterangepicker -->
+  <script type="text/javascript" src="{% static 'js/moment/moment.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/datepicker/daterangepicker.js' %}"></script>
+
+  <script src="{% static 'js/custom.js' %}"></script>
+
+  <!-- pace -->
+  <script src="{% static 'js/pace/pace.min.js' %}"></script>
+
+  <script src="{% static 'js/chartjs/chart.min.js' %}"></script>
+
+
+  <!-- // Bar chart
+  <script src="{% static 'js/myChart.js' %}">  </script>
+  -->
+
+  <script>
+  $.getJSON("{% url 'dashboard_data' %}", function(data) {
+  //$.getJSON("localhost:8000/dashboard_data/", function(data) {
+
+    var meses = []
+    var rendimentos = []
+    var despesas = []
+    var saldos = []
+    var saldos_acumulados = []
+
+    for (i = 0; i < data.length; i++) {
+      meses.push(data[i].mes);
+      rendimentos.push(data[i].rendimento);
+      despesas.push(data[i].despesa);
+      saldos.push(data[i].saldo);
+      saldos_acumulados.push(data[i].saldo_acumulado);
+    }
+
+    var ctx = document.getElementById("earVsExpChart");
+    var earVsExpChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: meses,
+        datasets: [{
+          label: 'Earnings',
+          backgroundColor: "#8cff66",
+          data: rendimentos
+        }, {
+          label: 'Expenses',
+          backgroundColor: "#ff6666",
+          data: despesas
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+
+    var ctx2 = document.getElementById("balanceChart");
+    var balanceChart = new Chart(ctx2, {
+      type: 'bar',
+      data: {
+        labels: meses,
+        datasets: [{
+          label: 'Balance',
+          backgroundColor: "#66d9ff",
+          data: saldos
+        }, {
+          label: 'Accumulated balance',
+          backgroundColor: "#6666ff",
+          data: saldos_acumulados
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+
+    var data = {
+    labels: [
+        "Red",
+        "Blue",
+        "Yellow"
+    ],
+    datasets: [
+        {
+            data: [300, 50, 100],
+            backgroundColor: [
+                "#FF6384",
+                "#36A2EB",
+                "#FFCE56"
+            ],
+            hoverBackgroundColor: [
+                "#FF6386",
+                "#36A2EB",
+                "#FFCE56"
+            ]
+        }]
+    };
+    var ctx3 = document.getElementById("expensesByCategory")
+    var myDoughnutChart = new Chart(ctx3, {
+    type: 'doughnut',
+    data: data,
+    });
+
+  });
+
+  </script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#range').daterangepicker(null, function(start, end, label) {
+        console.log(start.toISOString(), end.toISOString(), label);
+      });
+    });
+  </script>
+  <!-- /datepicker -->
+
+</body>
+
+</html>

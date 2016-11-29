@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+      <!-- page content -->
+      <div class="right_col" role="main">
+        <div class="">
+
+          <div class="page-title">
+            <div class="title_left">
+              <h3>Extrato do período</h3>
+            </div>
+
+            <div class="title_right">
+              <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search for...">
+                  <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Go!</button>
+                        </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+
+          <div class="row">
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>
+                    <form class="form-horizontal">
+                    <fieldset>
+                      <div class="control-group">
+                        <div class="controls">
+                          <div class="input-group">
+                            <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                            <input type="text" style="width: 200px" name="range" id="range" class="form-control" />
+                            <span class="inut-group-btn">
+                              <button type="submit" class="btn btn-default">Go</button>
+                            </span>
+                          </div>
+                          <div class="btn-group">
+                            <button type="submit" class="btn btn-default" name="jan" value="jan">Jan</button>
+                            <button type="submit" class="btn btn-default" name="fev" value="fev">Fev</button>
+                            <button type="submit" class="btn btn-default" name="mar" value="mar">Mar</button>
+                            <button type="submit" class="btn btn-default" name="abr" value="abr">Abr</button>
+                            <button type="submit" class="btn btn-default" name="mai" value="mai">Mai</button>
+                            <button type="submit" class="btn btn-default" name="jun" value="jun">Jun</button>
+                            <button type="submit" class="btn btn-default" name="jul" value="jul">Jul</button>
+                            <button type="submit" class="btn btn-default" name="ago" value="ago">Ago</button>
+                            <button type="submit" class="btn btn-default" name="set" value="set">Set</button>
+                            <button type="submit" class="btn btn-default" name="out" value="out">Out</button>
+                            <button type="submit" class="btn btn-default" name="nov" value="nov">Nov</button>
+                            <button type="submit" class="btn btn-default" name="dez" value="dez">Dez</button>
+                        </div>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </form>
+                  </h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Settings 1</a>
+                        </li>
+                        <li><a href="#">Settings 2</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content">
+                  <!--
+                  <p>Alguma mensagem...</p>
+                  -->
+                  <table class="table table-striped responsive-utilities jambo_table bulk_action">
+                    <thead>
+                      <tr class="headings">
+                        <th>
+                          <input type="checkbox" id="check-all" class="flat">
+                        </th>
+                        <th class="column-title">Data </th>
+                        <th class="column-title">Descrição </th>
+                        <th class="column-title">Valor (R$)</th>
+                        <th class="column-title">Categoria </th>
+                        <th class="column-title">Documeto </th>
+                        <th class="column-title">Edit</th>
+                        <!--
+                        <th class="column-title no-link last"><span class="nobr">Ação</span>
+                        </th>
+                        <th class="bulk-actions" colspan="7">
+                          <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                        </th>
+                        -->
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      {% for transaction in transactions %}
+                      <tr class="even pointer">
+                      <!--<tr class="odd pointer">-->
+                        <td class="a-center ">
+                          <input type="checkbox" class="flat" name="table_records">
+                        </td>
+                        <td class="">{{transaction.date|date:"SHORT_DATE_FORMAT"}}</td>
+                        <td class=" ">{{transaction.description}}</td>
+                        {% if transaction.value > 2000 %}
+                        <td class="green" align="right">{{transaction.value}}</td>
+                        {% else %}
+                        <td class="red" align="right">{{transaction.value}}</td>
+                        {% endif %}
+                        <td class=" ">{{transaction.category}}</td>
+                        <td class=" ">{{transaction.document}}</td>
+                        <td class=" last">
+                          <a href="#">Edit</a>
+                        </td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- /page content -->
+
+{% endblock %}
