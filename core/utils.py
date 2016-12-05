@@ -13,38 +13,11 @@ table Transaction.
 
 Account statement CSV file layout:
 Column 0: Date
-Column 1: Category name
-Column 2: Category ID
-Column 3: Description
-Column 4: Document
+Column 1: Category ID
+Column 2: Description
+Column 3: Document
 Column 5: Value
-"""
-def account_statement(name):
-	csv.register_dialect('semicolon', delimiter=';')
-	f = open(settings.DATA_ROOT + '/' + name, 'r')
-	try:
-	    reader = csv.reader(f, dialect='semicolon')
-
-	    for row in reader:
-	    	t = Transaction()
-	    	t.date = format_date(row[0])
-	    	if row[2]:
-		    	category_id = int(row[2])
-		    	t.category = Category.objects.get(pk=category_id)
-	    	t.description = row[3]
-	    	t.document = row[4]
-	    	t.value = format_value(row[5])
-	    	t.save()
-
-	    print('IMPORTAÇÃO REALIZADA COM SUCESSO!')
-	#except ValueError:
-	#	print(ValueError, name)
-	finally:
-		f.close()
-
-
-"""
-Processo de carga na tabela de transacoes
+Column 6: Balance
 
 Solucao para problema na leitura do arquivo importado:
 stackoverflow.com/questions/16243023/how-to-resolve-iterator-should-return-strings-not-bytes#answer-16243182
@@ -93,14 +66,14 @@ def carga_extrato(f):
 			dashboard_data.media_gastos = dashboard_data.despesa / int(t.date[8:10])
 			dashboard_data.saldo = dashboard_data.rendimento - dashboard_data.despesa
 			dashboard_data.saldo_acumulado = t.saldo
-
+			'''
 			print('DASHBOARD...: ' + str(dashboard_data.ano) + '/' + str(dashboard_data.mes))
 			print('Rendimento..: ' + str(dashboard_data.rendimento))
 			print('Despesa.....: ' + str(dashboard_data.despesa))
 			print('Media gastos: ' + str(dashboard_data.media_gastos))
 			print('Saldo.......: ' + str(dashboard_data.saldo))
 			print('Saldo acum..: ' + str(dashboard_data.saldo_acumulado))
-
+			'''
 			dashboard_data.save()
 
 		print('IMPORTAÇÃO REALIZADA COM SUCESSO!')

@@ -5,7 +5,6 @@ from django.core import serializers
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Transaction, Dashboard
-from .data import import2db
 from .forms import TransactionForm, UploadFileForm
 from .serializers import DashboardSerializer
 from .utils import carga_extrato
